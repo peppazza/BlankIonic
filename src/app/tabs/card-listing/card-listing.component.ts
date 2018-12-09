@@ -18,6 +18,8 @@ export class CardListingComponent {
 	cards: Card[] = [];
 	showedCards: Card[] = []
 	
+	isLoading: false;
+	
 	constructor(private activatedRoute: ActivatedRoute,
 		        private cardService: CardService,
 				private loadService: LoaderService,
@@ -32,9 +34,9 @@ export class CardListingComponent {
 	doRefresh(event) {
 		this.loadCards();
 		
-		setTimeout(() => {
-			event.target.complete();
-		}, 2000);
+		// NB
+		// per simulare il tempo della http request
+		setTimeout(() => { event.target.complete(); }, 2000);
 	}
 	
 	generateUrlToCardDetail(cardId: string) {
@@ -74,8 +76,13 @@ export class CardListingComponent {
 		});
 	}
 	
-	filter(event) {
+	onSearch(event) {
 		this.showedCards = event;
+		this.isLoading = false;
+	}
+	
+	onSearchStartes(event) {
+		this.isLoading = true;
 	}
 	
 }

@@ -10,8 +10,6 @@
 </ion-header>
 
 <ion-content padding>
-    <app-search [items]="cards" [properties]="['cardId', 'name', 'text']" (onSearch)="filter($event)"></app-search>
-
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content
                 pullingIcon="arrow-dropdown"
@@ -19,6 +17,12 @@
                 refreshingSpinner="circles">
         </ion-refresher-content>
     </ion-refresher>
+
+    <app-search [items]="cards"
+                [properties]="['cardId', 'name', 'text']"
+                (onSearch)="onSearch($event)"
+                (onSearchStarted)="onSearchStartes($event)"></app-search>
+    <ion-spinner text-center *ngIf="isLoading" class="search-spinner"></ion-spinner>
 
     <ion-list *ngIf="showedCards && showedCards.length > 0">
         <ion-list-header>

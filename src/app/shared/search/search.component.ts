@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs/index';
+import {BehaviorSubject} from 'rxjs/index';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
@@ -14,10 +14,9 @@ export class SearchComponent implements OnInit {
 	
 	@Output('onSearch') onSearchEmitter = new EventEmitter();
 	
-	searchSubject = new BehaviorSubject<string>('');
+	@Output('onSearchStarted') onSearchStartedEmitter = new EventEmitter();
 	
-	constructor() {
-	}
+	searchSubject = new BehaviorSubject<string>('');
 	
 	ngOnInit() {
 		this.searchSubject
@@ -52,6 +51,7 @@ export class SearchComponent implements OnInit {
 	}
 	
 	change(event) {
+		this.onSearchStartedEmitter.next();
 		this.searchSubject.next(event.detail.value);
 	}
 	
