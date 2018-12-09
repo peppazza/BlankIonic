@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            <ion-label>{{deckGroupName}} {{deckName}}</ion-label>
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button default-href="./"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <app-search [items]="cards" [properties]="['cardId', 'name', 'text']" (onSearch)="filter($event)"></app-search>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list *ngIf="showedCards && showedCards.length > 0">
+        <ion-list-header>
+            <ion-toolbar>
+                <ion-title>
+                    <ion-label>Cards</ion-label>
+                </ion-title>
+            </ion-toolbar>
+        </ion-list-header>
+        <ion-card *ngFor="let card of showedCards">
+            <ion-img [src]="card.img"></ion-img>
+
+            <ion-card-header>
+                <ion-card-title>{{card.name}}</ion-card-title>
+                <ion-card-subtitle>{{card.cardSet}}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+                <div [innerHTML]="card.text"></div>
+                <ion-button size="medium"
+                            expand="full"
+                            [href]="generateUrlToCardDetail(card.cardId)">
+                    Detail
+                </ion-button>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>
+
+

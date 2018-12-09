@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            <ion-label>Home</ion-label>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-button (click)="testClassicThenPromise($event)">
+                    <ion-label>Then</ion-label>
+                </ion-button>
+                <ion-button (click)="testAsyncAwaitPromise($event)">
+                    <ion-label>Async/await</ion-label>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

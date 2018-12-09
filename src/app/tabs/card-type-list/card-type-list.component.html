@@ -1,0 +1,9 @@
+<ion-list>
+    <ion-list-header>
+        <ion-label>{{deckGroupName}}</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let type of types" [href]="navigateTo(deckGroupName, type)">
+        <ion-icon name="card"></ion-icon>
+        <ion-label>{{type}}</ion-label>
+    </ion-item>
+</ion-list>

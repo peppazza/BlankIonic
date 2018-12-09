@@ -1,5 +1,7 @@
 {
   "name": "BlankIonic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-label>{{card?.name}}</ion-label>
+        <ion-buttons slot="start">
+            <ion-back-button default-href="./"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="card && card.cardId">
+    <ion-card>
+        <ion-card-header>
+            <ion-toolbar>
+                <ion-card-subtitle>
+                    <ion-label>{{card.cardSet}}</ion-label>
+                </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-label>{{card.cardId}}</ion-label>
+                </ion-card-title>
+            </ion-toolbar>
+        </ion-card-header>
+
+        <img [src]="card.img" (error)="loadDefaultImg($event)">
+
+        <ion-card-content>
+            <ion-item *ngIf="card.artist">
+                <ion-label>
+                    <h4>Artist</h4>
+                    <p>{{card.artist}}</p>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="card.health">
+                <ion-label>
+                    <h4>Health</h4>
+                    <p>{{card.health}}</p>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="card.name">
+                <ion-label>
+                    <h4>Name</h4>
+                    <p>{{card.name}}</p>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="card.text">
+                <ion-label>
+                    <p [innerHTML]="cardText()"></p>
+                </ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
