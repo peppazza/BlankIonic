@@ -20,4 +20,6 @@ export interface Card {
 	text: string;
 	type: string;
 	
+	favorite: boolean;
+	
 }

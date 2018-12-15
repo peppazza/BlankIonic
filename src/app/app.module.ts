@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoaderService} from './shared/services/loader.service';
 import {ToastService} from './shared/services/toast.service';
 import {AlertService} from './shared/services/alert.service';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
 	declarations: [
@@ -21,8 +22,9 @@ import {AlertService} from './shared/services/alert.service';
 	entryComponents: [],
 	imports: [
 		BrowserModule,
-		IonicModule.forRoot(),
 		AppRoutingModule,
+		IonicModule.forRoot(),
+		IonicStorageModule.forRoot(),
 		// HTTP
 		HttpClientModule
 	],
