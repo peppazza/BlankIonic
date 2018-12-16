@@ -5,6 +5,7 @@ import {Card} from '../../shared/model/card-deck';
 import {LoaderService} from '../../shared/services/loader.service';
 import {ToastService} from '../../shared/services/toast.service';
 import {CardFavoriteStore} from '../../shared/services/card-favorite.store';
+import {Subscription} from 'rxjs/index';
 
 @Component({
 	selector: 'app-card-listing',
@@ -22,6 +23,7 @@ export class CardListingComponent {
 	isLoading = false;
 	
 	private favoriteCards: any = {};
+	private favoriteCardSubscription: Subscription;
 	
 	constructor(private activatedRoute: ActivatedRoute,
 				private cardService: CardService,
@@ -29,7 +31,7 @@ export class CardListingComponent {
 				private toastService: ToastService,
 				private cardFavoriteStore: CardFavoriteStore) {
 		// load initial favorite cards
-		this.cardFavoriteStore.favoriteCards.subscribe(favoriteCards => {
+		this.favoriteCardSubscription = this.cardFavoriteStore.favoriteCards.subscribe(favoriteCards => {
 			this.favoriteCards = favoriteCards;
 		});
 	}
@@ -37,6 +39,12 @@ export class CardListingComponent {
 	ionViewWillEnter() {
 		if (this.cards && this.cards.length === 0)
 			this.loadCards();
+	}
+	
+	ionViewDidLeave() {
+		if (this.favoriteCardSubscription && !this.favoriteCardSubscription.closed) {
+			this.favoriteCardSubscription.unsubscribe();
+		}
 	}
 	
 	doRefresh(event) {

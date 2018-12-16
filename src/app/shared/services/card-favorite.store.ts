@@ -27,6 +27,10 @@ export class CardFavoriteStore {
 		return this._favoriteCardsSubject.asObservable();
 	}
 	
+	get favoriteCardsStoreKey(): string {
+		return this.FAVORITE_CARDS_STORE_KEY;
+	}
+	
 	toggleFavoriteCard(card: Card) {
 		const favoriteCards = this._favoriteCardsSubject.getValue();
 		
