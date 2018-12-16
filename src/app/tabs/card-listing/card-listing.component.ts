@@ -21,7 +21,7 @@ export class CardListingComponent {
 	
 	isLoading = false;
 	
-	private const FAVORITE_CARDS_STORAGE_KEY = 'favoriteCards';
+	private FAVORITE_CARDS_STORAGE_KEY = 'favoriteCards';
 	private favoriteCards: any = {};
 	
 	constructor(private activatedRoute: ActivatedRoute,
