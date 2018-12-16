@@ -21,6 +21,9 @@ export class CardListingComponent {
 	
 	isLoading = false;
 	
+	private const FAVORITE_CARDS_STORAGE_KEY = 'favoriteCards';
+	private favoriteCards: any = {};
+	
 	constructor(private activatedRoute: ActivatedRoute,
 				private cardService: CardService,
 				private loadService: LoaderService,
@@ -29,8 +32,9 @@ export class CardListingComponent {
 	}
 	
 	ionViewWillEnter() {
-		console.log('*** entering ***');
-		this.clearStorage();
+		// TODO do in dev; remove in prod
+		this.storage.set(this.FAVORITE_CARDS_STORAGE_KEY, {});
+		
 		if (this.cards && this.cards.length === 0)
 			this.loadCards();
 	}
@@ -96,65 +100,21 @@ export class CardListingComponent {
 		this.isLoading = true;
 	}
 	
-	togglePreference(card: Card) {
+	toggleFavorite(card: Card) {
 		console.log(card.cardId);
 		if (!card.favorite) {
-			this.addCardToFavorites(card);
-			card.favorite = !card.favorite;
+			// add to favorite cards
+			this.favoriteCards[card.cardId] = card;
 		} else {
-			this.removeCardFromFavorites(card);
-			card.favorite = !card.favorite;
+			// remove from favorite cards
+			delete this.favoriteCards[card.cardId];
 		}
-	}
-	
-	private addCardToFavorites(card: Card) {
-		this.storage.get('favoriteCards').then(res => {
-			if (!res) {
-				const favoriteCards = new Array();
-				favoriteCards.push(card.cardId);
-				this.storage.set('favoriteCards', favoriteCards).then(r => {
-					console.log('PRINTING FAVORITE CARDS', r);
-				});
-				return;
-			}
-			if (res.indexOf(card.cardId) < 0) {
-				res.push(card.cardId);
-				this.storage.set('favoriteCards', res).then(r => {
-					console.log('PRINTING FAVORITE CARDS', r);
-				});
-			}
-		}).catch(err => {
-			console.log(err);
-		});
-	}
-	
-	private removeCardFromFavorites(card: Card) {
-		this.storage.get('favoriteCards').then(res => {
-			if (!res) {
-				return;
-			}
-			
-			const favoriteCardsFiltered = new Array();
-			for (const cardId of res) {
-				if (cardId !== card.cardId) {
-					favoriteCardsFiltered.push(cardId);
-				}
-			}
-			
-			this.storage.set('favoriteCards', favoriteCardsFiltered).then(r => {
-				console.log('PRINTING FAVORITE CARDS', r);
+		this.storage.set(this.FAVORITE_CARDS_STORAGE_KEY, this.favoriteCards)
+			.then((err) => {
+				console.log('after setting favorite cards in storage');
+				console.log(err);
 			});
-		}).catch(err => {
-			console.log(err);
-		});
-	}
-	
-	async isFavorite(card: Card) {
-		const res = await this.storage.get('favoriteCards');
-		if (!res) {
-			return false;
-		}
-		return res.indexOf(card.cardId);
+		card.favorite = !card.favorite;
 	}
 	
 }
