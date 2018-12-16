@@ -14,6 +14,7 @@ import {LoaderService} from './shared/services/loader.service';
 import {ToastService} from './shared/services/toast.service';
 import {AlertService} from './shared/services/alert.service';
 import {IonicStorageModule} from '@ionic/storage';
+import {CardFavoriteStore} from './shared/services/card-favorite.store';
 
 @NgModule({
 	declarations: [
@@ -36,7 +37,8 @@ import {IonicStorageModule} from '@ionic/storage';
 		{provide: CardService, useClass: CardService},
 		{provide: LoaderService, useClass: LoaderService},
 		{provide: ToastService, useClass: ToastService},
-		{provide: AlertService, useClass: AlertService}
+		{provide: AlertService, useClass: AlertService},
+		CardFavoriteStore
 	],
 	bootstrap: [AppComponent]
 })
