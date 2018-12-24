@@ -15,6 +15,10 @@ import {ToastService} from './shared/services/toast.service';
 import {AlertService} from './shared/services/alert.service';
 import {IonicStorageModule} from '@ionic/storage';
 import {CardFavoriteStore} from './shared/services/card-favorite.store';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {Firebase} from '@ionic-native/firebase/ngx';
+import {FCMService} from './shared/services/fcm.service';
 
 @NgModule({
 	declarations: [
@@ -27,7 +31,17 @@ import {CardFavoriteStore} from './shared/services/card-favorite.store';
 		IonicModule.forRoot(),
 		IonicStorageModule.forRoot(),
 		// HTTP
-		HttpClientModule
+		HttpClientModule,
+		// FIREBASE
+		AngularFireModule.initializeApp({
+			apiKey: "AIzaSyARIA5KGOmEryOqC1knyHMGBogCxRQYmbY",
+			authDomain: "ioniclearnapi.firebaseapp.com",
+			databaseURL: "https://ioniclearnapi.firebaseio.com",
+			projectId: "ioniclearnapi",
+			storageBucket: "ioniclearnapi.appspot.com",
+			messagingSenderId: "208944314111"
+		}),
+		AngularFirestoreModule
 	],
 	providers: [
 		StatusBar,
@@ -38,7 +52,10 @@ import {CardFavoriteStore} from './shared/services/card-favorite.store';
 		{provide: LoaderService, useClass: LoaderService},
 		{provide: ToastService, useClass: ToastService},
 		{provide: AlertService, useClass: AlertService},
-		CardFavoriteStore
+		CardFavoriteStore,
+		// FIREBASE
+		Firebase,
+		FCMService
 	],
 	bootstrap: [AppComponent]
 })

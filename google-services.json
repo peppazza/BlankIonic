@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "208944314111",
+    "firebase_url": "https://ioniclearnapi.firebaseio.com",
+    "project_id": "ioniclearnapi",
+    "storage_bucket": "ioniclearnapi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208944314111:android:6ad9110a54f8255d",
+        "android_client_info": {
+          "package_name": "com.peppo.IonicLearnApi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208944314111-7qeft54g8rfgras4o7dpkar679q8gosj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsv8euNH0hu-fiZvFVMCcjDJgHdxv1Mis"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

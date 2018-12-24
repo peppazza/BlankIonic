@@ -15,6 +15,14 @@ export class ToastService {
 		toast.present();
 	}
 	
+	public async presentToastWhileUsingNotificationFeature(message: string) {
+		const toast: any = await this.toastController.create({
+			message,
+			duration: 4000
+		});
+		toast.present();
+	}
+	
 	public async presentErrorToast(httpStatusCode: number) {
 		const toast: any = await this.toastController.create({
 			position: 'middle',

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>208944314111-gjdujd56d92fb7ficc6f37tcejisol6v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.208944314111-gjdujd56d92fb7ficc6f37tcejisol6v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCyRtnDY-mXOx00g8jF1u73vCizmC3sQIw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>208944314111</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.peppo.IonicLearnApi</string>
+	<key>PROJECT_ID</key>
+	<string>ioniclearnapi</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ioniclearnapi.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:208944314111:ios:6ad9110a54f8255d</string>
+	<key>DATABASE_URL</key>
+	<string>https://ioniclearnapi.firebaseio.com</string>
+</dict>
+</plist>
